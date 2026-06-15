@@ -5,219 +5,310 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>malirmarek.cz</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231C2B3A'/%3E%3Crect x='6' y='10' width='16' height='7' rx='3.5' fill='%232A6FDB'/%3E%3Crect x='13' y='17' width='2.5' height='5' fill='%23F5C842'/%3E%3Crect x='10' y='22' width='8.5' height='3.5' rx='1.5' fill='%23F5C842'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23232F3E'/><g transform='translate(16,16) rotate(45) translate(-16,-16)'><rect x='14.5' y='3' width='3' height='13' rx='1.5' fill='%23C8CDD6'/><rect x='13.5' y='15.5' width='5' height='2.5' rx='1' fill='%23A0A8B0'/><ellipse cx='16' cy='22.5' rx='3.5' ry='5' fill='%23E2E5E9'/><ellipse cx='16' cy='26' rx='2' ry='1.8' fill='%23B0B8C1'/></g></svg>">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --navy: #1C2B3A;
-    --blue: #2A6FDB;
-    --blue-light: #d8e8f8;
-    --yellow: #F5C842;
-    --bg: #E8EBF0;
-    --bg2: #DFE3EA;
-    --card: #E3E7ED;
-    --gray: #C8CDD6;
-    --text: #1C2B3A;
-    --text-muted: #46535F;
-    --radius: 13px;
-  }
+:root {
+  --navy: #1C2B3A;
+  --blue: #2A6FDB;
+  --blue-light: #d8e8f8;
+  --yellow: #F5C842;
+  --bg: #E8EBF0;
+  --bg2: #DFE3EA;
+  --card: #E3E7ED;
+  --gray: #C8CDD6;
+  --text: #1C2B3A;
+  --muted: #50606E;
+  --radius: 13px;
+}
 
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    background: var(--bg);
-    overflow-x: hidden;
-  }
+html { scroll-behavior: smooth; }
 
-  /* ── CENTERED WRAPPER ── */
-  .wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 5%;
-  }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(232,235,240,0.96); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--gray);
-    height: 60px;
-  }
-  .nav-inner {
-    max-width: 1100px; margin: 0 auto; padding: 0 5%;
-    height: 100%; display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-logo { font-weight: 800; font-size: 1.1rem; color: var(--navy); text-decoration: none; letter-spacing: -0.02em; }
-  .nav-logo span { color: var(--blue); }
-  .nav-right { display: flex; align-items: center; gap: 10px; }
-  .nav-social { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; text-decoration: none; transition: opacity 0.2s, transform 0.15s; flex-shrink: 0; }
-  .nav-social:hover { opacity: 0.85; transform: scale(1.08); }
-  .nav-social svg { width: 36px; height: 36px; }
-  .nav-phone {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--blue); color: white;
-    font-weight: 700; font-size: 0.88rem;
-    padding: 9px 20px; border-radius: 50px;
-    text-decoration: none; transition: background 0.2s;
-  }
-  .nav-phone:hover { background: #1a58c4; }
-  .nav-phone svg { width: 14px; height: 14px; flex-shrink: 0; }
+/* ── LAYOUT ── */
+.wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh; background: var(--navy);
-    position: relative; overflow: hidden;
-    display: flex; align-items: center;
-  }
-  .hero-bg { position: absolute; inset: 0; pointer-events: none; opacity: 0.05; }
-  .hero .wrap { position: relative; z-index: 2; padding-top: 100px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .hero h1 {
-    font-size: clamp(2.2rem, 5.5vw, 3.4rem); font-weight: 900;
-    color: white; line-height: 1.08; margin-bottom: 18px;
-    letter-spacing: -0.03em; max-width: 640px;
-  }
-  .hero h1 em { font-style: normal; color: var(--yellow); }
-  .hero p {
-    font-size: 1.05rem; color: rgba(255,255,255,0.6);
-    line-height: 1.7; margin-bottom: 32px;
-    max-width: 420px; font-weight: 400;
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 9px;
-    background: var(--yellow); color: var(--navy);
-    font-weight: 700; font-size: 0.95rem;
-    padding: 14px 30px; border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(245,200,66,0.3);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,200,66,0.42); }
-  .btn-primary svg { width: 16px; height: 16px; flex-shrink: 0; }
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(232,235,240,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray);
+  height: 56px;
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 16px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+}
+.nav-logo {
+  font-weight: 800; font-size: 1rem;
+  color: var(--navy); text-decoration: none;
+  letter-spacing: -0.02em; white-space: nowrap; flex-shrink: 0;
+}
+.nav-logo span { color: var(--blue); }
 
-  /* ── STATS ── */
-  .stats-bar {
-    background: var(--yellow); padding: 22px 0;
-  }
-  .stats-inner {
-    max-width: 1100px; margin: 0 auto; padding: 0 5%;
-    display: flex; justify-content: center; gap: clamp(28px, 6vw, 80px); flex-wrap: wrap;
-  }
-  .stat { text-align: center; }
-  .stat-num { font-size: 1.75rem; font-weight: 900; color: var(--navy); line-height: 1; letter-spacing: -0.03em; }
-  .stat-label { font-size: 0.72rem; font-weight: 600; color: rgba(28,43,58,0.58); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.07em; }
+.nav-right {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.nav-social {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.nav-social:hover { opacity: 0.82; transform: scale(1.08); }
+.nav-social svg { width: 32px; height: 32px; display: block; }
 
-  /* ── SHARED ── */
-  .section-eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
-  .section-title { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 10px; letter-spacing: -0.025em; }
-  .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
-  .section-header { margin-bottom: 36px; }
+.nav-phone {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue); color: white;
+  font-weight: 700; font-size: 0.82rem;
+  padding: 8px 14px; border-radius: 50px;
+  text-decoration: none; white-space: nowrap;
+  transition: background 0.2s;
+}
+.nav-phone:hover { background: #1a58c4; }
+.nav-phone svg { width: 13px; height: 13px; flex-shrink: 0; }
+.nav-phone-text { display: none; }
 
-  /* ── SERVICES ── */
-  .services { padding: 72px 0; background: var(--bg); }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 16px; }
-  .service-card {
-    background: var(--card); border-radius: var(--radius); padding: 24px 20px;
-    border: 1px solid var(--gray);
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  }
-  .service-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(42,111,219,0.08); }
-  .service-icon { width: 40px; height: 40px; border-radius: 9px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 13px; }
-  .service-icon svg { width: 19px; height: 19px; color: var(--blue); }
-  .service-card h3 { font-size: 0.97rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-  .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 90px 0 60px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.2rem; font-weight: 900;
+  color: white; line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+.hero h1 em { font-style: normal; color: var(--yellow); }
+.hero p {
+  font-size: 1rem; color: rgba(255,255,255,0.62);
+  line-height: 1.7; margin-bottom: 28px;
+  max-width: 400px; margin-left: auto; margin-right: auto;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow); color: var(--navy);
+  font-weight: 700; font-size: 1rem;
+  padding: 14px 28px; border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(245,200,66,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(245,200,66,0.42); }
+.btn-primary svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-  /* ── GALLERY ── */
-  .gallery { padding: 72px 0; background: var(--bg2); }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 9px;
-    margin-bottom: 0;
-  }
-  .gallery-item {
-    position: relative; overflow: hidden;
-    border-radius: var(--radius);
-    background: var(--gray);
-    aspect-ratio: 4/3;
-    cursor: pointer;
-  }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .gallery-item:hover img { transform: scale(1.05); }
-  .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(28,43,58,0); transition: background 0.3s; }
-  .gallery-item:hover::after { background: rgba(28,43,58,0.18); }
-  .gallery-zoom {
-    position: absolute; inset: 0; z-index: 2;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .gallery-item:hover .gallery-zoom { opacity: 1; }
-  .gallery-zoom svg { width: 34px; height: 34px; color: white; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
-  .gallery-placeholder { width:100%; height:100%; min-height:160px; background:var(--bg2); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:7px; }
-  .gallery-placeholder svg { width:26px; height:26px; color:#8fa3b8; }
-  .gallery-placeholder span { font-size:0.72rem; color:#8fa3b8; font-weight:600; }
-  .gallery-note { margin-top: 18px; text-align: center; color: var(--text-muted); font-size: 0.83rem; opacity: 0.75; }
+/* ── STATS ── */
+.stats-bar { background: var(--yellow); padding: 20px 0; }
+.stats-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 20px;
+  display: flex; justify-content: center;
+  gap: 0; flex-wrap: nowrap;
+}
+.stat {
+  text-align: center; flex: 1;
+  padding: 0 8px;
+  border-right: 1px solid rgba(28,43,58,0.15);
+}
+.stat:last-child { border-right: none; }
+.stat-num { font-size: 1.5rem; font-weight: 900; color: var(--navy); line-height: 1; letter-spacing: -0.03em; }
+.stat-label { font-size: 0.65rem; font-weight: 600; color: rgba(28,43,58,0.55); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-  /* ── LIGHTBOX ── */
-  .lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(10,16,24,0.93); align-items: center; justify-content: center; }
-  .lightbox.open { display: flex; }
-  .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 10px; object-fit: contain; box-shadow: 0 24px 80px rgba(0,0,0,0.6); }
-  .lightbox-close { position: absolute; top: 18px; right: 22px; color: white; font-size: 1.8rem; cursor: pointer; line-height: 1; opacity: 0.65; transition: opacity 0.2s; background: none; border: none; font-family: inherit; }
-  .lightbox-close:hover { opacity: 1; }
-  .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 2rem; cursor: pointer; background: rgba(255,255,255,0.1); border: none; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0.65; transition: opacity 0.2s, background 0.2s; font-family: inherit; }
-  .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; background: rgba(255,255,255,0.2); }
-  .lightbox-prev { left: 18px; }
-  .lightbox-next { right: 18px; }
+/* ── SHARED ── */
+.eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+.section-title { font-size: 1.6rem; font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 8px; letter-spacing: -0.025em; }
+.section-sub { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+.section-hd { margin-bottom: 28px; }
 
-  /* ── SOCIAL ── */
-  .social { padding: 72px 0; background: var(--navy); }
-  .social .section-eyebrow { color: var(--yellow); }
-  .social .section-title { color: white; }
-  .social .section-sub { color: rgba(255,255,255,0.5); }
-  .social-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
-  .social-card { border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 13px; text-decoration: none; transition: transform 0.2s, opacity 0.2s; }
-  .social-card:hover { transform: translateY(-4px); opacity: 0.9; }
-  .social-card.instagram { background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
-  .social-card.facebook { background: #1877F2; }
-  .social-card-icon { width: 42px; height: 42px; }
-  .social-card h3 { color: white; font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; }
-  .social-card p { color: rgba(255,255,255,0.82); font-size: 0.84rem; line-height: 1.6; }
-  .social-card-link { display: inline-flex; align-items: center; gap: 7px; color: white; font-weight: 700; font-size: 0.92rem; background: rgba(255,255,255,0.17); border: 1.5px solid rgba(255,255,255,0.27); padding: 11px 22px; border-radius: 50px; margin-top: auto; align-self: flex-start; transition: background 0.2s; }
-  .social-card:hover .social-card-link { background: rgba(255,255,255,0.27); }
+/* ── SERVICES ── */
+.services { padding: 56px 0; background: var(--bg); }
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.service-card {
+  background: var(--card); border-radius: var(--radius); padding: 20px 16px;
+  border: 1px solid var(--gray);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.service-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(42,111,219,0.08); }
+.service-icon {
+  width: 38px; height: 38px; border-radius: 9px;
+  background: var(--blue-light);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+}
+.service-icon svg { width: 18px; height: 18px; color: var(--blue); }
+.service-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+.service-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
 
-  /* ── CONTACT ── */
-  .contact { padding: 72px 0; background: var(--bg); }
-  .contact-inner { max-width: 520px; margin: 0 auto; text-align: center; padding: 0 5%; }
-  .contact-inner .section-eyebrow { text-align: center; }
-  .contact-inner .section-title { text-align: center; }
-  .contact-inner .section-sub { margin-bottom: 32px; }
-  .contact-box { background: var(--navy); border-radius: 18px; padding: 38px 28px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-  .contact-box h3 { color: rgba(255,255,255,0.6); font-size: 0.9rem; font-weight: 500; }
-  .phone-link { display: flex; align-items: center; gap: 11px; background: var(--yellow); color: var(--navy); font-size: 1.4rem; font-weight: 800; padding: 14px 34px; border-radius: 60px; text-decoration: none; box-shadow: 0 6px 24px rgba(245,200,66,0.38); transition: transform 0.15s, box-shadow 0.15s; letter-spacing: -0.02em; }
-  .phone-link:hover { transform: scale(1.04); box-shadow: 0 10px 32px rgba(245,200,66,0.48); }
-  .phone-link svg { width: 22px; height: 22px; flex-shrink: 0; }
-  .contact-or { color: rgba(255,255,255,0.6); font-size: 0.82rem; font-weight: 500; }
-  .contact-social-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-  .contact-social-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.92rem; padding: 11px 22px; border-radius: 50px; text-decoration: none; border: none; transition: opacity 0.2s, transform 0.15s; color: white; }
-  .contact-social-btn:hover { opacity: 0.88; transform: scale(1.03); }
-  .contact-social-btn.ig { background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
-  .contact-social-btn.fb { background: #1877F2; }
+/* ── GALLERY ── */
+.gallery { padding: 56px 0; background: var(--bg2); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.gallery-item {
+  position: relative; overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--gray);
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(28,43,58,0); transition: background 0.3s; }
+.gallery-item:hover::after { background: rgba(28,43,58,0.18); }
+.gallery-zoom {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-zoom { opacity: 1; }
+.gallery-zoom svg { width: 30px; height: 30px; color: white; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4)); }
+.gallery-placeholder { width:100%; height:100%; background:var(--bg2); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px; }
+.gallery-placeholder svg { width:24px; height:24px; color:#8fa3b8; }
+.gallery-placeholder span { font-size:0.7rem; color:#8fa3b8; font-weight:600; }
+.gallery-note { text-align: center; color: var(--muted); font-size: 0.83rem; }
 
-  /* ── FOOTER ── */
-  footer { background: #111D28; padding: 20px 0; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
-  footer .logo-text { color: rgba(255,255,255,0.8); font-weight: 800; font-size: 0.9rem; letter-spacing: -0.02em; }
-  footer .logo-text span { color: var(--blue); }
-  footer p { color: rgba(255,255,255,0.55); font-size: 0.78rem; }
+/* ── LIGHTBOX ── */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(8,14,22,0.94); align-items: center; justify-content: center; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 86vh; border-radius: 10px; object-fit: contain; box-shadow: 0 20px 70px rgba(0,0,0,0.6); }
+.lightbox-close { position: absolute; top: 16px; right: 18px; color: white; font-size: 1.7rem; cursor: pointer; opacity: 0.65; transition: opacity 0.2s; background: none; border: none; font-family: inherit; }
+.lightbox-close:hover { opacity: 1; }
+.lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: white; cursor: pointer; background: rgba(255,255,255,0.1); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; opacity: 0.65; transition: opacity 0.2s, background 0.2s; font-family: inherit; }
+.lightbox-prev:hover, .lightbox-next:hover { opacity: 1; background: rgba(255,255,255,0.2); }
+.lightbox-prev { left: 12px; }
+.lightbox-next { right: 12px; }
 
-  @media (max-width: 768px) {
-    .hero h1 { max-width: 100%; }
-    .hero p { max-width: 100%; }
-    .gallery-grid { grid-template-columns: 1fr; }
-    .footer-inner { flex-direction: column; text-align: center; gap: 6px; }
-  }
+/* ── SOCIAL ── */
+.social { padding: 56px 0; background: var(--navy); }
+.social .eyebrow { color: var(--yellow); }
+.social .section-title { color: white; }
+.social .section-sub { color: rgba(255,255,255,0.55); }
+.social-cards { display: flex; flex-direction: column; gap: 14px; }
+.social-card {
+  border-radius: var(--radius); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.social-card:hover { transform: translateY(-3px); opacity: 0.9; }
+.social-card.instagram { background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
+.social-card.facebook { background: #1877F2; }
+.social-card-top { display: flex; align-items: center; gap: 12px; }
+.social-card-icon { width: 40px; height: 40px; flex-shrink: 0; }
+.social-card h3 { color: white; font-size: 1rem; font-weight: 800; }
+.social-card p { color: rgba(255,255,255,0.82); font-size: 0.88rem; line-height: 1.6; }
+.social-card-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: white; font-weight: 700; font-size: 0.9rem;
+  background: rgba(255,255,255,0.17);
+  border: 1.5px solid rgba(255,255,255,0.27);
+  padding: 10px 20px; border-radius: 50px;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+.social-card:hover .social-card-link { background: rgba(255,255,255,0.27); }
+
+/* ── CONTACT ── */
+.contact { padding: 56px 0; background: var(--bg); }
+.contact-inner { max-width: 520px; margin: 0 auto; text-align: center; padding: 0 20px; }
+.contact-inner .section-sub { margin-bottom: 28px; }
+.contact-box {
+  background: var(--navy); border-radius: 18px;
+  padding: 32px 24px;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+}
+.contact-box h3 { color: rgba(255,255,255,0.58); font-size: 0.88rem; font-weight: 500; }
+.phone-link {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--yellow); color: var(--navy);
+  font-size: 1.35rem; font-weight: 800;
+  padding: 14px 30px; border-radius: 60px;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 6px 22px rgba(245,200,66,0.38);
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: -0.02em; width: 100%;
+}
+.phone-link:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(245,200,66,0.48); }
+.phone-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+.contact-or { color: rgba(255,255,255,0.45); font-size: 0.82rem; }
+.contact-social-row { display: flex; gap: 10px; width: 100%; }
+.contact-social-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+  color: white; font-weight: 700; font-size: 0.88rem;
+  padding: 12px 10px; border-radius: 50px;
+  text-decoration: none; white-space: nowrap;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.contact-social-btn:hover { opacity: 0.88; transform: scale(1.03); }
+.contact-social-btn.ig { background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
+.contact-social-btn.fb { background: #1877F2; }
+.contact-social-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer { background: #111D28; padding: 18px 0; }
+.footer-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; flex-wrap: wrap; text-align: center;
+}
+.logo-text { color: rgba(255,255,255,0.82); font-weight: 800; font-size: 0.9rem; letter-spacing: -0.02em; }
+.logo-text span { color: var(--blue); }
+footer p { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+
+/* ── DESKTOP ── */
+@media (min-width: 640px) {
+  .wrap { padding: 0 40px; }
+  .nav-inner { padding: 0 40px; }
+  .nav-phone-text { display: inline; }
+  .nav-phone { font-size: 0.88rem; padding: 9px 18px; }
+
+  .hero { padding: 110px 0 80px; }
+  .hero h1 { font-size: 3rem; }
+  .hero p { font-size: 1.05rem; max-width: 480px; }
+
+  .section-title { font-size: 2rem; }
+  .services-grid { grid-template-columns: repeat(4, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .social-cards { flex-direction: row; }
+  .social-card { flex: 1; }
+  .contact-social-btn { font-size: 0.92rem; padding: 12px 20px; }
+}
+
+@media (min-width: 900px) {
+  .hero h1 { font-size: 3.6rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .hero p { font-size: 1.1rem; }
+  .services { padding: 72px 0; }
+  .gallery { padding: 72px 0; }
+  .social { padding: 72px 0; }
+  .contact { padding: 72px 0; }
+  .section-hd { margin-bottom: 36px; }
+}
 </style>
 </head>
 <body>
@@ -229,38 +320,36 @@
   <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
 </div>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">malirmarek<span>.cz</span></a>
     <div class="nav-right">
       <a href="https://www.instagram.com/malirmarek" target="_blank" rel="noopener" class="nav-social" aria-label="Instagram">
-        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="36" height="36" rx="18" fill="url(#ig-nav)"/>
-          <defs><radialGradient id="ig-nav" cx="30%" cy="107%" r="130%"><stop offset="0%" stop-color="#fdf497"/><stop offset="20%" stop-color="#fd5949"/><stop offset="55%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs>
-          <rect x="10" y="10" width="16" height="16" rx="4.5" stroke="white" stroke-width="1.8"/>
-          <circle cx="18" cy="18" r="4.2" stroke="white" stroke-width="1.8"/>
-          <circle cx="23" cy="13" r="1.1" fill="white"/>
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="16" fill="url(#ig-g)"/>
+          <defs><radialGradient id="ig-g" cx="30%" cy="107%" r="130%"><stop offset="0%" stop-color="#fdf497"/><stop offset="20%" stop-color="#fd5949"/><stop offset="55%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs>
+          <rect x="9" y="9" width="14" height="14" rx="4" stroke="white" stroke-width="1.6"/>
+          <circle cx="16" cy="16" r="3.7" stroke="white" stroke-width="1.6"/>
+          <circle cx="20.5" cy="11.5" r="1" fill="white"/>
         </svg>
       </a>
       <a href="https://www.facebook.com/malirmarek" target="_blank" rel="noopener" class="nav-social" aria-label="Facebook">
-        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="36" height="36" rx="18" fill="#1877F2"/>
-          <path d="M21 13.5h-1.8c-.5 0-.7.2-.7.8V16H21l-.4 2.5h-2.1V26h-3v-7.5h-1.5V16h1.5v-1.8C15.5 12.4 16.7 11 19 11c1 0 2 .1 2 .1V13.5z" fill="white"/>
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="16" fill="#1877F2"/>
+          <path d="M18.5 11h-1.6c-.44 0-.65.18-.65.7V14H18.5l-.37 2.2h-2.38V23h-2.6v-6.8H11.5V14h1.65v-2.4c0-1.9 1.1-3 3.1-3 .9 0 1.75.08 1.75.08V11z" fill="white"/>
         </svg>
       </a>
       <a href="tel:+420123456789" class="nav-phone">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.26 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +420 123 456 789
+        <span class="nav-phone-text">+420 123 456 789</span>
       </a>
     </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <svg class="hero-bg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <line x1="-100" y1="200" x2="800" y2="1100" stroke="white" stroke-width="120"/>
-    <line x1="300" y1="-100" x2="1200" y2="800" stroke="white" stroke-width="80"/>
-  </svg>
   <div class="wrap">
     <h1>Krásné stěny,<br><em>férová cena.</em></h1>
     <p>Rychle, čistě a kvalitně. Malujeme byty, domy a kanceláře v Brně a okolí – i o víkendu.</p>
@@ -271,18 +360,20 @@
   </div>
 </section>
 
+<!-- STATS -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-num">150+</div><div class="stat-label">dokončených zakázek</div></div>
+    <div class="stat"><div class="stat-num">100+</div><div class="stat-label">zakázek</div></div>
     <div class="stat"><div class="stat-num">15 let</div><div class="stat-label">zkušeností</div></div>
-    <div class="stat"><div class="stat-num">Brno</div><div class="stat-label">a okolí do 40 km</div></div>
+    <div class="stat"><div class="stat-num">Brno</div><div class="stat-label">a okolí</div></div>
   </div>
 </div>
 
+<!-- SERVICES -->
 <section class="services">
   <div class="wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Co dělám</div>
+    <div class="section-hd">
+      <div class="eyebrow">Co dělám</div>
       <h2 class="section-title">Služby</h2>
       <p class="section-sub">Přijdu, připravím povrch, odvedu práci a uklidím po sobě.</p>
     </div>
@@ -311,10 +402,11 @@
   </div>
 </section>
 
+<!-- GALLERY -->
 <section class="gallery">
   <div class="wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Ukázky práce</div>
+    <div class="section-hd">
+      <div class="eyebrow">Ukázky práce</div>
       <h2 class="section-title">Podívejte se sami</h2>
     </div>
     <div class="gallery-grid" id="gallery-grid">
@@ -347,23 +439,28 @@
   </div>
 </section>
 
+<!-- SOCIAL -->
 <section class="social">
   <div class="wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Sledujte mě</div>
+    <div class="section-hd">
+      <div class="eyebrow">Sledujte mě</div>
       <h2 class="section-title">Aktuální projekty na sítích</h2>
       <p class="section-sub">Before&amp;after fotky a průběh zakázek. Sledujte mě a vidíte všechno.</p>
     </div>
     <div class="social-cards">
       <a href="https://www.instagram.com/malirmarek" target="_blank" rel="noopener" class="social-card instagram">
-        <svg class="social-card-icon" viewBox="0 0 44 44" fill="none"><rect x="5" y="5" width="34" height="34" rx="9" stroke="white" stroke-width="2.5"/><circle cx="22" cy="22" r="7.5" stroke="white" stroke-width="2.5"/><circle cx="32" cy="12" r="2.2" fill="white"/></svg>
-        <h3>malirmarek.cz</h3>
+        <div class="social-card-top">
+          <svg class="social-card-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(255,255,255,0.2)"/><rect x="10" y="10" width="20" height="20" rx="5.5" stroke="white" stroke-width="2"/><circle cx="20" cy="20" r="5.5" stroke="white" stroke-width="2"/><circle cx="26.5" cy="13.5" r="1.3" fill="white"/></svg>
+          <h3>malirmarek.cz</h3>
+        </div>
         <p>Fotky hotových místností a zákulisí práce. Každý týden nový příspěvek.</p>
         <span class="social-card-link">Sledovat na Instagramu →</span>
       </a>
       <a href="https://www.facebook.com/malirmarek" target="_blank" rel="noopener" class="social-card facebook">
-        <svg class="social-card-icon" viewBox="0 0 44 44" fill="none"><path d="M37 22C37 13.716 30.284 7 22 7S7 13.716 7 22c0 7.364 5.395 13.475 12.469 14.582V26.297h-3.75V22h3.75V18.9c0-3.7 2.203-5.743 5.574-5.743 1.614 0 3.301.288 3.301.288V16.9h-1.859C24.334 16.9 23.53 18.1 23.53 19.326V22h4.114l-.657 4.297H23.53v10.285C30.605 35.475 37 29.364 37 22z" fill="white"/></svg>
-        <h3>malirmarek.cz</h3>
+        <div class="social-card-top">
+          <svg class="social-card-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(255,255,255,0.2)"/><path d="M23 15h-1.8c-.5 0-.7.2-.7.8V18H23l-.4 2.5h-2.1V28h-3v-7.5H16V18h1.5v-2.3C17.5 13.4 18.7 12 21 12c1 0 2 .1 2 .1V15z" fill="white"/></svg>
+          <h3>malirmarek.cz</h3>
+        </div>
         <p>Recenze zákazníků, fotky zakázek. Napište mi zprávu – odpovím do 24 hodin.</p>
         <span class="social-card-link">Sledovat na Facebooku →</span>
       </a>
@@ -371,9 +468,10 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact">
   <div class="contact-inner">
-    <div class="section-eyebrow">Kontakt</div>
+    <div class="eyebrow">Kontakt</div>
     <h2 class="section-title">Zavolejte pro nacenění</h2>
     <p class="section-sub">Přijdu se podívat a domluvíme cenu i termín. Bez závazků.</p>
     <div class="contact-box">
@@ -385,11 +483,11 @@
       <div class="contact-or">nebo napište na sítích</div>
       <div class="contact-social-row">
         <a href="https://www.instagram.com/malirmarek" target="_blank" rel="noopener" class="contact-social-btn ig">
-          <svg width="16" height="16" viewBox="0 0 44 44" fill="none"><rect x="5" y="5" width="34" height="34" rx="9" stroke="white" stroke-width="2.5"/><circle cx="22" cy="22" r="7.5" stroke="white" stroke-width="2.5"/><circle cx="32" cy="12" r="2.2" fill="white"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
           Instagram
         </a>
         <a href="https://www.facebook.com/malirmarek" target="_blank" rel="noopener" class="contact-social-btn fb">
-          <svg width="16" height="16" viewBox="0 0 44 44" fill="none"><path d="M37 22C37 13.716 30.284 7 22 7S7 13.716 7 22c0 7.364 5.395 13.475 12.469 14.582V26.297h-3.75V22h3.75V18.9c0-3.7 2.203-5.743 5.574-5.743 1.614 0 3.301.288 3.301.288V16.9h-1.859C24.334 16.9 23.53 18.1 23.53 19.326V22h4.114l-.657 4.297H23.53v10.285C30.605 35.475 37 29.364 37 22z" fill="white"/></svg>
+          <svg viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           Facebook
         </a>
       </div>
@@ -397,6 +495,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <span class="logo-text">malirmarek<span>.cz</span></span>
